@@ -33,11 +33,11 @@ try:
 
     # Model configuration
     args = NERArgs()
-    args.num_train_epochs = 1
+    args.num_train_epochs = 15
     args.learning_rate = 1e-4
     args.overwrite_output_dir = True
-    args.train_batch_size = 50
-    args.eval_batch_size = 50
+    args.train_batch_size = 8
+    args.eval_batch_size = 8
 
     label = data["labels"].unique().tolist()
 
