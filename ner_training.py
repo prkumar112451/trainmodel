@@ -5,6 +5,7 @@ from sklearn.metrics import accuracy_score
 from simpletransformers.ner import NERModel, NERArgs
 import logging
 import traceback
+import pickle
 
 # Setup logging to a file outside Docker (mounted volume)
 log_file = "/outputs/ner_training.log"
@@ -33,7 +34,7 @@ try:
 
     # Model configuration
     args = NERArgs()
-    args.num_train_epochs = 15
+    args.num_train_epochs = 1
     args.learning_rate = 1e-4
     args.overwrite_output_dir = True
     args.train_batch_size = 8
@@ -54,6 +55,12 @@ try:
     result, model_outputs, preds_list = model.eval_model(test_data)
 
     logging.info(f"NER model training and evaluation completed successfully. Result: {result}")
+    
+    model.save_pretrained("./my_newmodel")
+    tokenizer.save_pretrained("./my_newmodel")
+    
+    with open('./my_newmodel/label_mapping.pkl', 'wb') as f:
+        pickle.dump((label2id, id2label), f)
 
 except Exception as e:
     logging.error(f"An error occurred during NER model training: {e}")
