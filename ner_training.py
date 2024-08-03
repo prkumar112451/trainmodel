@@ -208,7 +208,7 @@ class dataset(Dataset):
         return self.len
       
 # Setup logging to a file outside Docker (mounted volume)
-log_file = "/outputs/ner_training.log"
+log_file = "ner_training.log"
 logging.basicConfig(filename=log_file, level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
