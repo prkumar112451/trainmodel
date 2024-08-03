@@ -312,7 +312,7 @@ try:
         # Serialize and write the dictionaries to the file
         pickle.dump((label2id, id2label), f)
 
-    logging.info(f"NER model training and evaluation completed successfully. Result: {result}")
+    logging.info(f"NER model training and evaluation completed successfully")
         
 except Exception as e:
     logging.error(f"An error occurred during NER model training: {e}")
