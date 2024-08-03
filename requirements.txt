@@ -2,3 +2,7 @@ pandas
 torch
 scikit-learn
 simpletransformers
+pandas
+numpy
+transformers
+seqeval
